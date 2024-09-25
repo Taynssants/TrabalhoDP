@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Menu from './Menu'
+import {Route, Routes} from 'react-router-dom'
+import CriaProduto from './views/CriaProduto'
+import Selecionados from './views/Selecionados';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import Produtos from './views/Produtos';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <Provider store={store}>
+    <div>
+      <Menu />
+      <Routes>
+        <Route path='/Produtos' element={<Produtos />} />
+        <Route path='/CriaProduto' element={<CriaProduto />} />
+        <Route path='/Selecionados' element={<Selecionados />} />
+      </Routes>
     </div>
+  </Provider>
   );
 }
 
